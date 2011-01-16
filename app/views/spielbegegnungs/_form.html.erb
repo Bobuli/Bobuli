@@ -1,0 +1,33 @@
+<%= form_for(@spielbegegnung) do |f| %>
+  <% if @spielbegegnung.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@spielbegegnung.errors.count, "error") %> prohibited this spielbegegnung from being saved:</h2>
+
+      <ul>
+      <% @spielbegegnung.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :verein_id %><br />
+    <%= f.text_field :verein_heim_id %>
+  </div>
+  <div class="field">
+    <%= f.label :verein_id %><br />
+    <%= f.text_field :verein_gast_id %>
+  </div>
+  <div class="field">
+    <%= f.label :datum %><br />
+    <%= f.datetime_select :datum %>
+  </div>
+  <div class="field">
+    <%= f.label :ort %><br />
+    <%= f.text_field :ort %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

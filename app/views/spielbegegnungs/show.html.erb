@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Verein:</b>
+  <%= @spielbegegnung.verein_heim_id %>
+</p>
+
+<p>
+  <b>Verein:</b>
+  <%= @spielbegegnung.verein_gast_id %>
+</p>
+
+<p>
+  <b>Datum:</b>
+  <%= @spielbegegnung.datum %>
+</p>
+
+<p>
+  <b>Ort:</b>
+  <%= @spielbegegnung.ort %>
+</p>
+
+
+<%= link_to 'Edit', edit_spielbegegnung_path(@spielbegegnung) %> |
+<%= link_to 'Back', spielbegegnungs_path %>

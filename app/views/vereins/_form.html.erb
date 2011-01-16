@@ -1,0 +1,29 @@
+<%= form_for(@verein) do |f| %>
+  <% if @verein.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@verein.errors.count, "error") %> prohibited this verein from being saved:</h2>
+
+      <ul>
+      <% @verein.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :stadt %><br />
+    <%= f.text_field :stadt %>
+  </div>
+  <div class="field">
+    <%= f.label :trainier %><br />
+    <%= f.text_field :trainier %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

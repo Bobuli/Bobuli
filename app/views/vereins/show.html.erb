@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @verein.name %>
+</p>
+
+<p>
+  <b>Stadt:</b>
+  <%= @verein.stadt %>
+</p>
+
+<p>
+  <b>Trainier:</b>
+  <%= @verein.trainier %>
+</p>
+
+
+<%= link_to 'Edit', edit_verein_path(@verein) %> |
+<%= link_to 'Back', vereins_path %>

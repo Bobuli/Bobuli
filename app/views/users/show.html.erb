@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @user.password %>
+</p>
+
+
+<% if signed_in? %>
+Benutzername:
+<%= current_user.name%> <br>
+Tippgemeinschaft:
+<%= current_user.tippgemeinschafts.inspect%> <br>
+
+
+<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+<% else %>
+<li><%= link_to "Sign in", signin_path %></li>
+<% end %>
+
+--------------------------------
+Tipps:
+<br> 
+<%= render @tipps %>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

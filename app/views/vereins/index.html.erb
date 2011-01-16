@@ -1,0 +1,27 @@
+<h1>Listing vereins</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Stadt</th>
+    <th>Trainier</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vereins.each do |verein| %>
+  <tr>
+    <td><%= verein.name %></td>
+    <td><%= verein.stadt %></td>
+    <td><%= verein.trainier %></td>
+    <td><%= link_to 'Show', verein %></td>
+    <td><%= link_to 'Edit', edit_verein_path(verein) %></td>
+    <td><%= link_to 'Destroy', verein, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Verein', new_verein_path %>

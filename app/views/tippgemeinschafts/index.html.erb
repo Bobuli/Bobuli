@@ -1,0 +1,23 @@
+<h1>Listing tippgemeinschafts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tippgemeinschafts.each do |tippgemeinschaft| %>
+  <tr>
+    <td><%= tippgemeinschaft.name %></td>
+    <td><%= link_to 'Show', tippgemeinschaft %></td>
+    <td><%= link_to 'Edit', edit_tippgemeinschaft_path(tippgemeinschaft) %></td>
+    <td><%= link_to 'Destroy', tippgemeinschaft, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tippgemeinschaft', new_tippgemeinschaft_path %>

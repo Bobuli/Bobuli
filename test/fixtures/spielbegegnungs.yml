@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  verein_id: 1
+  verein_id: 1
+  datum: 2011-01-15 09:47:14
+  ort: MyString
+
+two:
+  verein_id: 1
+  verein_id: 1
+  datum: 2011-01-15 09:47:14
+  ort: MyString

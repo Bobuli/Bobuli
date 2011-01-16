@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tippgemeinschaft:</b>
+  <%= @user_tippgemeinschaft.tippgemeinschaft_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @user_tippgemeinschaft.user_id %>
+</p>
+
+
+
+
+<% @tp = Tippgemeinschaft.find(@user_tippgemeinschaft.tippgemeinschaft_id)%>
+<%= @tp.tipps.inspect%>
+
+<%= link_to 'Edit', edit_user_tippgemeinschaft_path(@user_tippgemeinschaft) %> |
+<%= link_to 'Back', user_tippgemeinschafts_path %>

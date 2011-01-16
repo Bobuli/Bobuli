@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  spielbegegnungs_id: 1
+  tippgemeinschaft_id: 1
+  tore_heim: 1
+  tore_gast: 1
+  punkte: 1
+
+two:
+  spielbegegnungs_id: 1
+  tippgemeinschaft_id: 1
+  tore_heim: 1
+  tore_gast: 1
+  punkte: 1

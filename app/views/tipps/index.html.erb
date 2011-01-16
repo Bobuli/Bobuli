@@ -1,0 +1,34 @@
+<h1>Listing tipps</h1>
+
+<table>
+  <tr>
+    <th>Spielbegegnungs</th>
+    <th>Tippgemeinschaft</th>
+    <th>Tore heim</th>
+    <th>Tore gast</th>
+    <th>Punkte</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipps.each do |tipp| %>
+  <tr>
+    <td><%= tipp.spielbegegnung_id %>
+        <%= Spielbegegnung.find(tipp.spielbegegnung_id).ort %>
+    </td>
+    <td><%= tipp.tippgemeinschaft_id %>
+        <%= Tippgemeinschaft.find(tipp.tippgemeinschaft_id).name %>
+    </td>
+    <td><%= tipp.tore_heim %></td>
+    <td><%= tipp.tore_gast %></td>
+    <td><%= tipp.punkte %></td>
+    <td><%= link_to 'Show', tipp %></td>
+    <td><%= link_to 'Edit', edit_tipp_path(tipp) %></td>
+    <td><%= link_to 'Destroy', tipp, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% link_to 'New Tipp', new_tipp_path %>

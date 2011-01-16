@@ -1,0 +1,37 @@
+<%= form_for(@tipp) do |f| %>
+  <% if @tipp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipp.errors.count, "error") %> prohibited this tipp from being saved:</h2>
+
+      <ul>
+      <% @tipp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :spielbegegnung_id %><br />
+    <%= f.text_field :spielbegegnung_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tippgemeinschaft_id %><br />
+    <%= f.text_field :tippgemeinschaft_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tore_heim %><br />
+    <%= f.text_field :tore_heim %>
+  </div>
+  <div class="field">
+    <%= f.label :tore_gast %><br />
+    <%= f.text_field :tore_gast %>
+  </div>
+  <div class="field">
+    <%= f.label :punkte %><br />
+    <%= f.text_field :punkte %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
