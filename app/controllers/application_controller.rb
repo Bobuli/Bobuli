@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
      
    
  
- # before_filter :enforce_authentication 
+  before_filter :enforce_authentication 
   
   
   # Enforces authentication for both ordinary requests and REST requests. For ordinary
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_basic('MyApplication') do |name, password|
       
        if name == 'admin' && password == 'admin'
-          @current_user = User.find(1)
+          @current_user = User.find(8)
 puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"       
 puts @current_user.inspect
           true

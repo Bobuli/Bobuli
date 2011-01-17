@@ -10,24 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110116125950) do
+ActiveRecord::Schema.define(:version => 20110117092725) do
 
-# Could not dump table "spielbegegnungs" because of following ArgumentError
-#   invalid date
+# Could not dump table "spielbegegnungs" because of following Mysql2::Error
+#   Invalid date: BTREE
 
-# Could not dump table "tippgemeinschafts" because of following ArgumentError
-#   invalid date
+# Could not dump table "tippgemeinschafts" because of following Mysql2::Error
+#   Invalid date: BTREE
 
-# Could not dump table "tipps" because of following ArgumentError
-#   invalid date
+# Could not dump table "tipps" because of following Mysql2::Error
+#   Invalid date: BTREE
 
-# Could not dump table "user_tippgemeinschafts" because of following ArgumentError
-#   invalid date
+# Could not dump table "user_tippgemeinschafts" because of following Mysql2::Error
+#   Invalid date: BTREE
 
-# Could not dump table "users" because of following ArgumentError
-#   invalid date
+# Could not dump table "users" because of following Mysql2::Error
+#   Invalid date: BTREE
 
-# Could not dump table "vereins" because of following ArgumentError
-#   invalid date
+# Could not dump table "vereins" because of following Mysql2::Error
+#   Invalid date: BTREE
 
 end

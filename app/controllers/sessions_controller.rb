@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
     def destroy
       sign_out
-      redirect_to spielbegegnungs_path
+      redirect_to '/signin'
     end  
       
     

@@ -1,5 +1,48 @@
 <h1>New tipp</h1>
 
-<%= render 'form' %>
+
+<table border='1' sytle='dotted'>
+  <tr>
+    <th>Verein Heim</th>
+    <th>Verein Gast</th>
+    <th>Datum</th>
+    <th>Ort</th>
+    <td>Tipp Tore Heim</td>
+    <td>Tipp Tore Gasts</td>
+    <td></td>
+  </tr>
+
+<% @spielbegegnungs.each do |spielbegegnung| %>
+  <tr>
+    <td><%= Verein.find(spielbegegnung.verein_heim_id).name %></td>
+    <td><%= Verein.find(spielbegegnung.verein_gast_id).name %></td>     
+    <td><%= spielbegegnung.datum %></td>
+    <td><%= spielbegegnung.ort %></td>
+    <%= form_for(@tipp, :url => { :action => "create", :controller => 'tipps'}) do |t| %>
+    <td><div class="field">
+        <%= t.text_field :tore_heim %>
+      </div>
+    </td> 
+    <td>     
+      <div class="field">
+          <%= t.text_field :tore_gast %>
+      </div>
+    </td>
+    <td>
+       <div class="actions">
+        <%= t.submit %>
+      </div>
+    </td>
+        <%= t.hidden_field :spielbegegnung_id, :value => spielbegegnung.id %>
+    <% end %>  
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+
 
 <%= link_to 'Back', tipps_path %>

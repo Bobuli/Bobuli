@@ -27,6 +27,7 @@ class TippsController < ApplicationController
   # GET /tipps/new
   # GET /tipps/new.xml
   def new
+    @spielbegegnungs = Spielbegegnung.all
     @tipp = Tipp.new
 
     respond_to do |format|
@@ -50,7 +51,7 @@ class TippsController < ApplicationController
 
     respond_to do |format|
       if @tipp.save
-        format.html { redirect_to(@tipp, :notice => 'Tipp was successfully created.') }
+        format.html { redirect_to(current_user, :notice => 'Tipp was successfully created.') }
         format.xml  { render :xml => @tipp, :status => :created, :location => @tipp }
       else
         format.html { render :action => "new" }

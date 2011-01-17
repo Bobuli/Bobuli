@@ -1,14 +1,9 @@
 <tr>
-    <td>Ort:
-        <%= tipp.spielbegegnung_id %>
-        <%= Spielbegegnung.find(tipp.spielbegegnung_id).ort %>
-    </td>
-    <td>Tippgemeinschaft
-        <%= tipp.tippgemeinschaft_id %>
-        <%= Tippgemeinschaft.find(tipp.tippgemeinschaft_id).name %>
-    </td>
+    <td><%= Verein.find(tipp.spielbegegnung.verein_heim_id).name %></td>
+    <td><%= Verein.find(tipp.spielbegegnung.verein_gast_id).name %></td>
+    <td><%= tipp.spielbegegnung.tore_heim %></td>
+    <td><%= tipp.spielbegegnung.tore_gast %></td>
     <td><%= tipp.tore_heim %></td>
     <td><%= tipp.tore_gast %></td>
     <td><%= tipp.punkte %></td>
 </tr> 
-<br><br>  

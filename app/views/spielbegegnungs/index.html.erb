@@ -1,31 +1,22 @@
-<h1>Listing spielbegegnungs</h1>
+<h1>Alle Spielbegegnungen</h1>
 
-<table>
+<table border='1' sytle='dotted'>
   <tr>
-    <th>Verein</th>
-    <th>Verein</th>
+    <th>Verein Heim</th>
+    <th>Verein Gast</th>
     <th>Datum</th>
     <th>Ort</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+ </tr>
 
 <% @spielbegegnungs.each do |spielbegegnung| %>
   <tr>
-    <td><%= spielbegegnung.verein_heim_id %>
-        <%= Verein.find(spielbegegnung.verein_heim_id).name %></td>
-    <td><%= spielbegegnung.verein_gast_id %>
-        <%= Verein.find(spielbegegnung.verein_gast_id).name %></td>     
+    <td><%= Verein.find(spielbegegnung.verein_heim_id).name %></td>
+    <td><%= Verein.find(spielbegegnung.verein_gast_id).name %></td>     
     <td><%= spielbegegnung.datum %></td>
     <td><%= spielbegegnung.ort %></td>
-    <td><%= link_to 'Show', spielbegegnung %></td>
-    <td><%= link_to 'Edit', edit_spielbegegnung_path(spielbegegnung) %></td>
-    <td><%= link_to 'Destroy', spielbegegnung, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Spielbegegnung', new_spielbegegnung_path %>
+<%= link_to 'Back', user_path(current_user) %>

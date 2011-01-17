@@ -3,7 +3,7 @@ class SpielbegegnungsController < ApplicationController
   # GET /spielbegegnungs.xml
   def index
     @spielbegegnungs = Spielbegegnung.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @spielbegegnungs }

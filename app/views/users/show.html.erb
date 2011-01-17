@@ -1,33 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-
 <% if signed_in? %>
-Benutzername:
-<%= current_user.name%> <br>
+<h3>Welcome <%= current_user.name%> on Bobuli!<br></h3>
+
+Diese Seite sieht zwar ziemlich Scheiße aus, kann aber schon etwas =).
+<br>
+<br>
+Try also using xml (Firefox)  GET /spielbegegnungs.xml  user:admin, pwd:admin (no admin privilegs ;)) 
+<br> 
+<br>
+
 Tippgemeinschaft:
 <%= current_user.tippgemeinschafts.inspect%> <br>
+<br>
+<br>
+<br>
 
 
-<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+
+<%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %> |
+<%= link_to 'Tipp abgeben', new_tipp_path %> |
+<%= link_to 'Tippranking ansehen', users_path%>|
+<%= link_to 'Change my User Settings', edit_user_path(@user) %> |
+<%= link_to "Sign out", signout_path, :method => :delete %> 
 <% else %>
-<li><%= link_to "Sign in", signin_path %></li>
+<%= link_to "Sign in", signin_path %>
 <% end %>
 
---------------------------------
-Tipps:
-<br> 
+<br>
+<br>
+<h3>Your recent Tipps:</h3><br>
+<% if @user.tippgemeinschafts.first.tipps.nil? %>
+--<br>
+<% else %>
+<table border='1'>
+<tr>
+  <td>Mannschaft Heim</td>
+  <td>Mannschaft Gast</td>
+  <td>Tore Heim</td>
+  <td>Tore Gast</td>
+  <td>Tipp Tore Heim</td>
+  <td>Tipp Tore Gast</td>
+  <td>Punkte</td>
+</tr> 
 <%= render @tipps %>
+</table>
+<% end %>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
