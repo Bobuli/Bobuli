@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   # Authentication based approach is used.
   def enforce_authentication
     if is_rest_call?
-      enforce_rest_authentication
+    #  enforce_rest_authentication
     else
       enforce_non_rest_authentication
     end
