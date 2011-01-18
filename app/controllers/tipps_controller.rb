@@ -2,7 +2,7 @@ class TippsController < ApplicationController
   # GET /tipps
   # GET /tipps.xml
   def index
-    
+    @tipps_g = Tipp.all
     @spielbegegnungen = Spielbegegnung.all
 #    @tipps = Tipp.all
     @tipps = current_user.tippgemeinschafts.first.tipps
@@ -30,7 +30,11 @@ class TippsController < ApplicationController
   def new
     @spielbegegnungs = Spielbegegnung.all
     @tipp = Tipp.new
-
+    @spielbegegnung = Spielbegegnung.find(params[:id])
+    @spielbegegnung.tipps << @tipp
+     @tg = current_user.tippgemeinschafts.first              #FIXME!
+    @tg.tipps << @tipp
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @tipp }
@@ -46,8 +50,7 @@ class TippsController < ApplicationController
   # POST /tipps.xml
   def create
     @tipp = Tipp.new(params[:tipp])
-    @tg = current_user.tippgemeinschafts.first              #FIXME!
-    @tg.tipps << @tipp
+   
     
 
     respond_to do |format|

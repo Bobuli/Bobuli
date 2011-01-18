@@ -32,6 +32,7 @@
     <!-- REFACTOR ME PLEASE-->
     <% x = true %>
     <% @tipps.each do |tipp| %>
+
       <% if spielbegegnung.tipps.include?(tipp)%>
         <% x = false%>
         <td><%= tipp.tore_heim %> : <%= tipp.tore_gast %></td>  
@@ -40,12 +41,49 @@
     <% end %>  
     <% if x %>
       <td> - : -</td>
-      <td><%= link_to 'tippen', new_tipp_path %></td>
+      <td><%= link_to 'tippen', new_tipp_path(:id => spielbegegnung.id) %></td>
     <% end %>
     
   </tr>
 <% end %>
 </table>
+
+
+  
+  
+  
+
+<!-- JUST FOR ADMIN--->
+<%if signed_in? && current_user.admin?%>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Spielbegegnung</th>
+    <th>Owner</th>
+    <th>Tipp</th>
+    <th></th>
+    <% if current_user.nil?%>
+    <th></th>
+    <th></th>
+    <% end %>
+  </tr>
+
+<% @tipps_g.each do |tipp| %>
+  <tr>
+    <td><%= tipp.id %></td>
+    <td><%= tipp.spielbegegnung.id %></td>
+    <td><%= tipp.tippgemeinschaft.users.first.name %></td>
+    <td><%= tipp.tore_heim %>:<%= tipp.tore_gast %></td>
+    <td><%= link_to 'Show', tipp %></td>
+    <% if signed_in? && current_user.admin? %>
+      <td><%= link_to 'Edit', edit_tipp_path(tipp) %></td>
+      <td><%= link_to 'Destroy', tipp, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
 
 </p>
 </div>
