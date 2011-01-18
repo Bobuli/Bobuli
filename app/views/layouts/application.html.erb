@@ -43,21 +43,27 @@
            <h2>Categories</h2>
           <ul>
           <% if signed_in? %>
-       
-<li><%= link_to 'Alle Vereine ansehen', vereins_path %></li>            
-<li><%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %></li>
-<li><%= link_to 'Tipp abgeben', new_tipp_path %></li>
-<li><%= link_to 'Tippranking ansehen', users_path%></li>
-<li><%= link_to 'Benutzer Einstellungen', edit_user_path(current_user) %></li>
-            
-          
+             <li><%= link_to 'Alle Vereine ansehen', vereins_path %></li>            
+             <li><%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %></li>
+             <li><%= link_to 'Tipp abgeben', new_tipp_path %></li>
+             <li><%= link_to 'Tippranking ansehen', users_path%></li>
+             <li><%= link_to 'Benutzer Einstellungen', edit_user_path(current_user) %></li>
           <%else%>
-<li><%= link_to 'Alle Vereine ansehen', vereins_path %></li>            
-<li><%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %></li>
-          
+            <li><%= link_to 'Alle Vereine ansehen', vereins_path %></li>            
+            <li><%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %></li>
           </ul>
           <%end%>
           <br>
+       
+          <% if signed_in? && current_user.admin? %>
+           <br>
+           <h2>Admin Panel</h2>
+            <ul>
+              <li><%= link_to 'Alle Vereine verwalten', vereins_path %></li>            
+              <li><%= link_to 'Alle Spielbegegnungen verwalten', spielbegegnungs_path %></li>
+              <li><%= link_to 'Alle Tipps verwalten', tipps_path %></li>
+            </ul>
+        <%end%>
          
           
         </li>
