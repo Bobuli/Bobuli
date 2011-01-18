@@ -1,32 +1,14 @@
-<p id="notice"><%= notice %></p>
-
 <% if signed_in? %>
-<h3>Welcome <%= current_user.name%> on Bobuli!<br></h3>
+<h1 class="title">Welcome <%= current_user.name%> on Bobuli!</h1>
+<p class="byline"><small>  </small></p>
 
-Diese Seite sieht zwar ziemlich Scheiße aus, kann aber schon etwas =).
-<br>
-<br>
-Try also using xml (Firefox)  GET /spielbegegnungs.xml  user:admin, pwd:admin (no admin privilegs ;)) 
-<br> 
-<br>
-
+   
+<div class="entry">
+ <p> 
 Tippgemeinschaft:
 <%= current_user.tippgemeinschafts.inspect%> <br>
-<br>
-<br>
-<br>
-
-
-
-<%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %> |
-<%= link_to 'Tipp abgeben', new_tipp_path %> |
-<%= link_to 'Tippranking ansehen', users_path%>|
-<%= link_to 'Change my User Settings', edit_user_path(@user) %> |
-<%= link_to "Sign out", signout_path, :method => :delete %> 
-<% else %>
-<%= link_to "Sign in", signin_path %>
-<% end %>
-
+</p>
+<p>
 <br>
 <br>
 <h3>Your recent Tipps:</h3><br>
@@ -45,6 +27,24 @@ Tippgemeinschaft:
 </tr> 
 <%= render @tipps %>
 </table>
+</p>
+<% end %>
+
+
+
+<p class="links"><a href="#" class="more">Read More</a> &nbsp;&nbsp;&nbsp; <a href="#" class="comments">No Comments</a></p>
+</div>
+
+<br>
+<br>
+<br>
+
+
+
+<%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %> |
+<%= link_to 'Tipp abgeben', new_tipp_path %> |
+<%= link_to 'Tippranking ansehen', users_path%>|
+<%= link_to 'Change my User Settings', edit_user_path(@user) %> |
 <% end %>
 
 

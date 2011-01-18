@@ -3,15 +3,15 @@
 <%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :id=>"s" %>
   </div>
-  <div class="field">
+  <div class="field" > 
     <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password , :id=>"s" %>
   </div>
   <div class="field">
     <%= f.label :password_confirmation, "Confirmation" %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :id=>"s"  %>
   </div>
   <div class="actions">
     <%= f.submit "Sign up" %>

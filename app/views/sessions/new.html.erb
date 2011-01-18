@@ -1,5 +1,9 @@
-<h1>Sign in here!</h1>
+<h1 class="title">Sign In</h1>
+<p class="byline"><small>  </small></p>
 
+   
+<div class="entry">
+ <p> 
 <%= form_for(:session, :url => sessions_path) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
@@ -15,3 +19,5 @@
 <% end %>
 
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+</p>
+</div>

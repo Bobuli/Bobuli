@@ -1,27 +1,37 @@
-<h1>Listing vereins</h1>
+<h1 class="title">Alle Vereine</h1>
+<p class="byline"><small>  </small></p>
+
+   
+<div class="entry">
+ <p> 
 
 <table>
   <tr>
     <th>Name</th>
     <th>Stadt</th>
-    <th>Trainier</th>
+    <th></th>
+    <% if current_user.nil?%>
     <th></th>
     <th></th>
-    <th></th>
+    <% end %>
   </tr>
 
 <% @vereins.each do |verein| %>
   <tr>
     <td><%= verein.name %></td>
     <td><%= verein.stadt %></td>
-    <td><%= verein.trainier %></td>
     <td><%= link_to 'Show', verein %></td>
+    <% if current_user.nil?%>
     <td><%= link_to 'Edit', edit_verein_path(verein) %></td>
     <td><%= link_to 'Destroy', verein, :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
   </tr>
 <% end %>
 </table>
 
-<br />
-
+<br/>
+<% if current_user.nil?%>
 <%= link_to 'New Verein', new_verein_path %>
+<% end %>
+</p>
+</div>

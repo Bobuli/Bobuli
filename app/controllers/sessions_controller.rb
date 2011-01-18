@@ -1,3 +1,4 @@
+
 class SessionsController < ApplicationController
 
  skip_filter :enforce_authentication

@@ -1,5 +1,7 @@
-<h1>Alle Spielbegegnungen</h1>
-
+<h1 class="title">Alle Spielbegegnungen</h1>
+<p class="byline"><small>  </small></p>
+<div class="entry">
+ <p> 
 <table border='1' sytle='dotted'>
   <tr>
     <th>Verein Heim</th>
@@ -12,11 +14,10 @@
   <tr>
     <td><%= Verein.find(spielbegegnung.verein_heim_id).name %></td>
     <td><%= Verein.find(spielbegegnung.verein_gast_id).name %></td>     
-    <td><%= spielbegegnung.datum %></td>
+    <td><%= spielbegegnung.datum.to_date %></td>
     <td><%= spielbegegnung.ort %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-<%= link_to 'Back', user_path(current_user) %>
+</p>
+</div>
