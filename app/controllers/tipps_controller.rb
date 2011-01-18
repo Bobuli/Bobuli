@@ -3,6 +3,7 @@ class TippsController < ApplicationController
   # GET /tipps.xml
   def index
     
+    @spielbegegnungen = Spielbegegnung.all
 #    @tipps = Tipp.all
     @tipps = current_user.tippgemeinschafts.first.tipps
 

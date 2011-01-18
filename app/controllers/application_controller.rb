@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
      
    
  
-  before_filter :enforce_authentication 
+  before_filter :enforce_authentication
   
   
   # Enforces authentication for both ordinary requests and REST requests. For ordinary

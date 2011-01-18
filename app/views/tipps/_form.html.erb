@@ -11,14 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :spielbegegnung_id %><br />
-    <%= f.text_field :spielbegegnung_id %>
-  </div>
-  <div class="field">
-    <%= f.label :tippgemeinschaft_id %><br />
-    <%= f.text_field :tippgemeinschaft_id %>
-  </div>
+  
+  
   <div class="field">
     <%= f.label :tore_heim %><br />
     <%= f.text_field :tore_heim %>
@@ -27,10 +21,24 @@
     <%= f.label :tore_gast %><br />
     <%= f.text_field :tore_gast %>
   </div>
-  <div class="field">
-    <%= f.label :punkte %><br />
-    <%= f.text_field :punkte %>
-  </div>
+  
+  <%if signed_in? && current_user.admin?%>
+  
+      <div class="field">
+        <%= f.label :spielbegegnung_id %><br />
+        <%= f.text_field :spielbegegnung_id %>
+      </div>
+      <div class="field">
+        <%= f.label :tippgemeinschaft_id %><br />
+        <%= f.text_field :tippgemeinschaft_id %>
+      </div>
+      <div class="field">
+        <%= f.label :punkte %><br />
+        <%= f.text_field :punkte %>
+      </div>
+  <% end %>    
+  
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

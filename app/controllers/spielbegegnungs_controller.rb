@@ -1,4 +1,6 @@
 class SpielbegegnungsController < ApplicationController
+  
+  before_filter :enforce_authentication, :except => :index
   # GET /spielbegegnungs
   # GET /spielbegegnungs.xml
   def index

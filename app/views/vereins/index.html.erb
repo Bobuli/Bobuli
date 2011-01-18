@@ -21,17 +21,17 @@
     <td><%= verein.name %></td>
     <td><%= verein.stadt %></td>
     <td><%= link_to 'Show', verein %></td>
-    <% if current_user.nil?%>
-    <td><%= link_to 'Edit', edit_verein_path(verein) %></td>
-    <td><%= link_to 'Destroy', verein, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% if signed_in? && current_user.admin? %>
+      <td><%= link_to 'Edit', edit_verein_path(verein) %></td>
+      <td><%= link_to 'Destroy', verein, :confirm => 'Are you sure?', :method => :delete %></td>
   <% end %>
   </tr>
 <% end %>
 </table>
 
 <br/>
-<% if current_user.nil?%>
-<%= link_to 'New Verein', new_verein_path %>
+ <% if signed_in? && current_user.admin? %>
+<%= link_to 'Neuer Verein hinzufügen', new_verein_path %>
 <% end %>
 </p>
 </div>

@@ -23,6 +23,7 @@ Bobuli::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/vereine', :to => 'vereins#index'
 
 
   resources :users do

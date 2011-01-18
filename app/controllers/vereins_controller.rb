@@ -1,4 +1,7 @@
 class VereinsController < ApplicationController
+  
+    before_filter :enforce_authentication, :except => :index
+  
   # GET /vereins
   # GET /vereins.xml
   def index

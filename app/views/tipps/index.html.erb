@@ -1,34 +1,51 @@
-<h1>Listing tipps</h1>
+<h1 class="title">Meine Tipps</h1>
+<p class="byline"><small>  </small></p>
 
-<table>
+   
+<div class="entry">
+ <p> 
+
+<table border='1' sytle='dotted'>
   <tr>
-    <th>Spielbegegnungs</th>
-    <th>Tippgemeinschaft</th>
-    <th>Tore heim</th>
-    <th>Tore gast</th>
-    <th>Punkte</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Verein Heim</th>
+    <th>Verein Gast</th>
+    <th>Datum</th>
+    <th>Anstoß</th>
+    <th>Ergebnis</th>
+    <td>Tipp</td>
+    <td>Tippen</td>
   </tr>
 
-<% @tipps.each do |tipp| %>
+<% @spielbegegnungen.each do |spielbegegnung| %>
   <tr>
-    <td><%= tipp.spielbegegnung_id %>
-        <%= Spielbegegnung.find(tipp.spielbegegnung_id).ort %>
-    </td>
-    <td><%= tipp.tippgemeinschaft_id %>
-        <%= Tippgemeinschaft.find(tipp.tippgemeinschaft_id).name %>
-    </td>
-    <td><%= tipp.tore_heim %></td>
-    <td><%= tipp.tore_gast %></td>
-    <td><%= tipp.punkte %></td>
-    <td><%= link_to 'Show', tipp %></td>
-    <td><%= link_to 'Edit', edit_tipp_path(tipp) %></td>
-    <td><%= link_to 'Destroy', tipp, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>  <%= Verein.find(spielbegegnung.verein_heim_id).name %></td>
+    <td>  <%= Verein.find(spielbegegnung.verein_gast_id).name %></td>
+    <td>  <%= spielbegegnung.datum.to_date %></td>
+    <td>  <%= spielbegegnung.datum.to_s(:time)  %></td>
+    <td>  <% if spielbegegnung.tore_heim.nil? %>
+               - : -
+            <% else %>
+               <%= spielbegegnung.tore_heim %> : <%= spielbegegnung.tore_gast %>
+          <% end %></td>
+    
+    
+    <!-- REFACTOR ME PLEASE-->
+    <% x = true %>
+    <% @tipps.each do |tipp| %>
+      <% if spielbegegnung.tipps.include?(tipp)%>
+        <% x = false%>
+        <td><%= tipp.tore_heim %> : <%= tipp.tore_gast %></td>  
+        <td><%= link_to 'tippen', edit_tipp_path(tipp) %></td>
+      <% end %>
+    <% end %>  
+    <% if x %>
+      <td> - : -</td>
+      <td><%= link_to 'tippen', new_tipp_path %></td>
+    <% end %>
+    
   </tr>
 <% end %>
 </table>
 
-<br />
-<% link_to 'New Tipp', new_tipp_path %>
+</p>
+</div>

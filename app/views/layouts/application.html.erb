@@ -45,7 +45,7 @@
           <% if signed_in? %>
              <li><%= link_to 'Alle Vereine ansehen', vereins_path %></li>            
              <li><%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %></li>
-             <li><%= link_to 'Tipp abgeben', new_tipp_path %></li>
+             <li><%= link_to 'Tipp abgeben', tipps_path %></li>
              <li><%= link_to 'Tippranking ansehen', users_path%></li>
              <li><%= link_to 'Benutzer Einstellungen', edit_user_path(current_user) %></li>
           <%else%>
