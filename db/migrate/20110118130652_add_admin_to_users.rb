@@ -7,5 +7,3 @@ class AddAdminToUsers < ActiveRecord::Migration
     remove_column :users, :admin
   end
 end
-
-end
