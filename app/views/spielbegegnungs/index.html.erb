@@ -32,6 +32,8 @@
 <% end %>
 </table>
 <br>
-<%= link_to 'Neue Spielbegegnung hinzufügen', new_spielbegegnung_path %>
+<% if signed_in? && current_user.admin? %>
+  <%= link_to 'Neue Spielbegegnung hinzufügen', new_spielbegegnung_path %>
+<% end %>
 </p>
 </div>

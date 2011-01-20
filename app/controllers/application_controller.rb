@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   protected
  
   def enforce_rest_authentication
-    authenticate_or_request_with_http_basic('MyApplication') do |name, password|
+    authenticate_or_request_with_http_basic('Bobuli Webservice 1.0') do |name, password|
       
       user = User.authenticate(name,password)
       if user.nil?
