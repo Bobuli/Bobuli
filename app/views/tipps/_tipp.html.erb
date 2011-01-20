@@ -1,9 +1,18 @@
 <tr>
     <td><%= Verein.find(tipp.spielbegegnung.verein_heim_id).name %></td>
     <td><%= Verein.find(tipp.spielbegegnung.verein_gast_id).name %></td>
-    <td><%= tipp.spielbegegnung.tore_heim %></td>
-    <td><%= tipp.spielbegegnung.tore_gast %></td>
-    <td><%= tipp.tore_heim %></td>
-    <td><%= tipp.tore_gast %></td>
-    <td><%= tipp.punkte %></td>
+
+    <% if tipp.spielbegegnung.tore_heim.nil? %>
+      <td>-:-</td>
+    <% else %>
+      <td><%= tipp.spielbegegnung.tore_heim %>:<%= tipp.spielbegegnung.tore_gast %></td>
+    <% end %>
+    
+    <% if tipp.tore_heim.nil? || tipp.tore_gast.nil? %>
+      <td>-:-</td>
+    <% else %>
+      <td><%= tipp.tore_heim %>:<%= tipp.tore_gast %></td>
+    <% end %>
+    
+        <td><%= tipp.punkte %></td>
 </tr> 

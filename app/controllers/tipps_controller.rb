@@ -28,15 +28,19 @@ class TippsController < ApplicationController
   # GET /tipps/new
   # GET /tipps/new.xml
   def new
-    @spielbegegnungs = Spielbegegnung.all
     @tipp = Tipp.new
-    @spielbegegnung = Spielbegegnung.find(params[:id])
-    @spielbegegnung.tipps << @tipp
-     @tg = current_user.tippgemeinschafts.first              #FIXME!
-    @tg.tipps << @tipp
-    
+        
     respond_to do |format|
-      format.html # new.html.erb
+      
+      format.html  do # new.html.erb
+        @spielbegegnungs = Spielbegegnung.all
+        @spielbegegnung = Spielbegegnung.find(params[:id])
+        @spielbegegnung.tipps << @tipp
+        @tg = current_user.tippgemeinschafts.first              #FIXME!
+        @tg.tipps << @tipp
+
+      
+      end
       format.xml  { render :xml => @tipp }
     end
   end
@@ -50,8 +54,9 @@ class TippsController < ApplicationController
   # POST /tipps.xml
   def create
     @tipp = Tipp.new(params[:tipp])
-   
-    
+    @tg = current_user.tippgemeinschafts.first              #FIXME!
+    @tg.tipps << @tipp
+       
 
     respond_to do |format|
       if @tipp.save

@@ -26,7 +26,7 @@ module SessionsHelper
 
 
   def admin?
-    !current_user.admin?
+    !current_user.admin.nil?
   end
 
 

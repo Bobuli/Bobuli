@@ -5,12 +5,12 @@
 <div class="entry">
  <p> 
 
-<table>
+<table border='1'>
   <tr>
     <th>Name</th>
     <th>Stadt</th>
     <th></th>
-    <% if current_user.nil?%>
+    <% if signed_in? && current_user.admin? %>
     <th></th>
     <th></th>
     <% end %>
@@ -23,7 +23,7 @@
     <td><%= link_to 'Show', verein %></td>
     <% if signed_in? && current_user.admin? %>
       <td><%= link_to 'Edit', edit_verein_path(verein) %></td>
-      <td><%= link_to 'Destroy', verein, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Delete', verein, :confirm => 'Are you sure?', :method => :delete %></td>
   <% end %>
   </tr>
 <% end %>

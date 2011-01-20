@@ -8,6 +8,11 @@
     <th>Verein Gast</th>
     <th>Datum</th>
     <th>Ort</th>
+<% if signed_in? && current_user.admin? %>
+    <th></th>
+    <th></th>
+    <th></th>
+<% end %>    
  </tr>
 
 <% @spielbegegnungs.each do |spielbegegnung| %>
@@ -16,8 +21,17 @@
     <td><%= Verein.find(spielbegegnung.verein_gast_id).name %></td>     
     <td><%= spielbegegnung.datum.to_date %></td>
     <td><%= spielbegegnung.ort %></td>
+<% if signed_in? && current_user.admin? %>
+    <td><%= link_to 'Show', spielbegegnung %></td>
+    <td><%= link_to 'Edit', edit_spielbegegnung_path(spielbegegnung) %></td>
+    <td><%= link_to 'Delete', spielbegegnung, :confirm => 'Are you sure?', :method => :delete %></td>
+<% end %>    
+    
+    
   </tr>
 <% end %>
 </table>
+<br>
+<%= link_to 'Neue Spielbegegnung hinzufügen', new_spielbegegnung_path %>
 </p>
 </div>

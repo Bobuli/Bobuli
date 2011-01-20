@@ -5,8 +5,11 @@
    
 <div class="entry">
  <p> 
-Tippgemeinschaft:
-<%= current_user.tippgemeinschafts.inspect%> <br>
+<%= current_user.name%>
+gehört zu folgenden Tppgemeinschaften:<br>
+
+Tippgemeinschafts ID : <%= current_user.tippgemeinschafts.first.id%><br>
+Tippgemeinschagts Name: <%= current_user.tippgemeinschafts.name%><br>
 </p>
 <p>
 <br>
@@ -19,10 +22,8 @@ Tippgemeinschaft:
 <tr>
   <td>Mannschaft Heim</td>
   <td>Mannschaft Gast</td>
-  <td>Tore Heim</td>
-  <td>Tore Gast</td>
-  <td>Tipp Tore Heim</td>
-  <td>Tipp Tore Gast</td>
+  <td>Ergebnis </td>
+  <td>Tipp Tore</td>
   <td>Punkte</td>
 </tr> 
 <%= render @tipps %>
@@ -30,21 +31,8 @@ Tippgemeinschaft:
 </p>
 <% end %>
 
-
-
-<p class="links"><a href="#" class="more">Read More</a> &nbsp;&nbsp;&nbsp; <a href="#" class="comments">No Comments</a></p>
 </div>
 
-<br>
-<br>
-<br>
-
-
-
-<%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %> |
-<%= link_to 'Tipp abgeben', tipps_path %> |
-<%= link_to 'Tippranking ansehen', users_path%>|
-<%= link_to 'Change my User Settings', edit_user_path(@user) %> |
 <% end %>
 
 

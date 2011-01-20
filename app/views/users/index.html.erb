@@ -4,11 +4,15 @@
    
 <div class="entry">
  <p> 
-<table>
+<table border='1'>
   <tr>
     <th>Name</th>
     <th>Punkte</th>
+   <%if signed_in? && current_user.admin?%>
     <th></th>
+    <th></th>
+    <th></th>
+   <% end %> 
   </tr>
 
 <% @users.each do |user| %>
@@ -21,6 +25,13 @@
           <%end%>
           <%= y %>
          <%end%></td>
+   <%if signed_in? && current_user.admin?%>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %></td>
+   <% end %> 
+
+   
    </tr>
 <% end %>
 </table>

@@ -13,16 +13,12 @@ class ApplicationController < ActionController::Base
   # Authentication based approach is used.
   def enforce_authentication
     if is_rest_call?
-    #  enforce_rest_authentication
+      enforce_rest_authentication
     else
       enforce_non_rest_authentication
     end
   end
  
-
-
-
-
 
 #/***********************************************************************************************
 # * PROTECTED METHODES
@@ -32,16 +28,15 @@ class ApplicationController < ActionController::Base
   def enforce_rest_authentication
     authenticate_or_request_with_http_basic('MyApplication') do |name, password|
       
-       if name == 'admin' && password == 'admin'
-          @current_user = User.find(8)
-puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"       
-puts @current_user.inspect
-          true
-       else
-          @current_user = nil
-          false
-       end 
-    end
+      user = User.authenticate(name,password)
+      if user.nil?
+        @current_user = user
+        false
+      else
+        @current_user = user
+        true
+      end
+    end  
   end
  
  
@@ -61,11 +56,6 @@ puts @current_user.inspect
     end
     true
   end
- 
- 
- 
- 
- 
  
  
  
