@@ -5,10 +5,13 @@ class SpielbegegnungsController < ApplicationController
   # GET /spielbegegnungs.xml
   def index
     @spielbegegnungs = Spielbegegnung.all
+    #@spieler_tipps = current_user.tippgemeinschafts.first.tipps
+    
+    
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @spielbegegnungs }
+      format.xml  #{ render :xml => @spielbegegnungs }
     end
   end
 

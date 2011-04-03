@@ -1,9 +1,26 @@
-<h1>Sign up here!</h1>
+<h1 class="title">Sign In</h1>
+<div class="entry">
+ <p> 
+
+
+<% if flash[:notice] %>
+  <p style="color:green"><%= flash[:notice] %></p>
+<% end %>
+
+<% if flash[:error] %>
+  <p style="color:red"><%= flash[:error] %></p>
+<% end %>
+    
+
 
 <%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, :id=>"s" %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :id=>"s" %>
   </div>
   <div class="field" > 
     <%= f.label :password %><br />
@@ -18,3 +35,5 @@
   </div>
 <% end %>
 <%= link_to 'Back', users_path %>
+</p>
+</div>

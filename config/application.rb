@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
-
+#OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 require 'rails/all'
+require 'mysql2'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.

@@ -1,5 +1,7 @@
 Bobuli::Application.routes.draw do
   
+  root :to => 'sessions#new'
+  
   get "pages/home"
   get "pages/contact"
   get "pages/about"
@@ -8,25 +10,41 @@ Bobuli::Application.routes.draw do
   match 'contact', :to => 'pages#contact'
   match 'about',   :to => 'pages#about'
   match 'home', :to => 'pages#home'
+  
+  
 
- 
+  match 'users/activate_tippgemeinschaft', :to => 'users#activate_tippgemeinschaft', :as => 'activate_tippgemeinschaft'	
+  match 'users/activate_account', :to => 'users#activate_account', :as => 'activate_account'
+  match 'sesssions/change_password', :to => 'sessions#change_password', :as => 'change_password'
+  match 'sesssions/update_password', :to => 'sessions#update_password', :as => 'update_password'
+
+  #:to => 'users#activate_account'	  
+
 
   resources :user_tippgemeinschafts
 
   get "sessions/new"
 
   resources :users
-  resources :sessions, :only => [:new, :create, :destroy]
+  resources :sessions, :only => [:new, :create, :destroy, :passwordForgotten] do
+  	#post 'reset'
+  end
  
- 
+  match '/updateTippg',  :to => 'sessions#setTippg'
+  
   
   match '/signup',  :to => 'users#new'
+  match '/password_forgotten',  :to => 'sessions#password_forgotten'
+  match '/reset_password',  :to => 'sessions#reset'
+  
   match '/signin',  :to => 'sessions#new'
+  
   match '/signout', :to => 'sessions#destroy'
   match '/vereine', :to => 'vereins#index'
 
-
   resources :users do
+  	get 'inviteToGroup', :on => :member
+  	post 'invite', :on => :member
     resources :tipps
   end
   resources :tipps
@@ -34,7 +52,9 @@ Bobuli::Application.routes.draw do
   resources :vereins
 
 
-  resources :tippgemeinschafts
+  resources :tippgemeinschafts do
+  	post 'chooseTippgemeinschaft', :on => :member
+  end
 
 
   

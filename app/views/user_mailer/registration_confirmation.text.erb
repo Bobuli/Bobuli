@@ -1,0 +1,18 @@
+Hallo <%= @user.name %>,
+
+Du hast dich erfolgreich an dem dem Tippspiel Bobuli angemeldet!
+
+Um deine Registierung abzuschließen, klicke noch auf den folgenden Bestätigungslink, um deinen Account zu aktivieren.
+
+<%= activate_account_url(:host => "http://bobuli.heroku.com", :key => @user.validation_key) %>
+
+
+
+
+Viel Spaß beim Tippen,
+
+wünscht das Bobuli-Team
+
+
+
+Bei Problmen kannst du uns hier erreichen: bobuli@heroku.com

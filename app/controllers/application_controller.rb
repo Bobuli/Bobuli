@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
    
   protect_from_forgery
   include SessionsHelper    ## non_rest_authentication is Session-based
-     
-   
+  
+  
  
   before_filter :enforce_authentication
   
@@ -34,7 +34,8 @@ class ApplicationController < ActionController::Base
         false
       else
         @current_user = user
-        true
+		@current_tippgemeinschaft = Tippgemeinschaft.find_by_name(@current_user.name.to_s)
+		true
       end
     end  
   end

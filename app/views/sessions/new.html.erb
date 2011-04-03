@@ -1,9 +1,17 @@
 <h1 class="title">Sign In</h1>
-<p class="byline"><small>  </small></p>
-
-   
 <div class="entry">
  <p> 
+
+   				<% if flash[:notice] %>
+			      <p style="color:green"><%= flash[:notice] %></p>
+			    <% end %>
+			    
+			    <% if flash[:error] %>
+			      <p style="color:red"><%= flash[:error] %></p>
+			    <% end %>
+    
+
+
 <%= form_for(:session, :url => sessions_path) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
@@ -18,6 +26,9 @@
   </div>
 <% end %>
 
+
+
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<%= link_to "Passwort vergessen?", password_forgotten_path %>
 </p>
 </div>

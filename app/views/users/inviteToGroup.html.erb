@@ -1,0 +1,5 @@
+<%= form_tag(invite_user_path, :method => "post") do %>
+  	<%= label_tag(:q, "Nachricht:") %>
+	<%= text_area_tag 'comment', nil, :size => "25x10" %>
+  <%= submit_tag("Einladen!") %>
+<% end %>

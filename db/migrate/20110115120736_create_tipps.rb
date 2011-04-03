@@ -6,6 +6,7 @@ class CreateTipps < ActiveRecord::Migration
       t.integer :tore_heim
       t.integer :tore_gast
       t.integer :punkte
+      t.string :owner
 
       t.timestamps
     end

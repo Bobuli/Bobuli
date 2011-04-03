@@ -1,0 +1,6 @@
+
+	var authors = new Array( <%@users.size %>); 
+
+	<% @users.each_with_index do | user, index | %>
+		authors[<%= index %>] = "<%= user.name %>"
+	<% end %>

@@ -1,9 +1,16 @@
 <h1 class="title">Meine Tipps</h1>
-<p class="byline"><small>  </small></p>
-
-   
 <div class="entry">
- <p> 
+ <p>
+   				<% if flash[:notice] %>
+			      <p style="color:green"><%= flash[:notice] %></p>
+			    <% end %>
+			    
+			    <% if flash[:error] %>
+			      <p style="color:red"><%= flash[:error] %></p>
+			    <% end %> 	 
+ 	
+         	
+
 
 <table border='1' sytle='dotted'>
   <tr>
@@ -16,44 +23,9 @@
     <td>Tippen</td>
   </tr>
 
-<% @spielbegegnungen.each do |spielbegegnung| %>
-  <tr>
-    <td>  <%= Verein.find(spielbegegnung.verein_heim_id).name %></td>
-    <td>  <%= Verein.find(spielbegegnung.verein_gast_id).name %></td>
-    <td>  <%= spielbegegnung.datum.to_date %></td>
-    <td>  <%= spielbegegnung.datum.to_s(:time)  %></td>
-    <td>  <% if spielbegegnung.tore_heim.nil? %>
-               - : -
-            <% else %>
-               <%= spielbegegnung.tore_heim %> : <%= spielbegegnung.tore_gast %>
-          <% end %></td>
-    
-    
-    <!-- REFACTOR ME PLEASE-->
-    <% x = true %>
-    <% @tipps.each do |tipp| %>
-
-      <% if spielbegegnung.tipps.include?(tipp)%>
-        <% x = false%>
-
-                 
-        <td><%= tipp.tore_heim %> : <%= tipp.tore_gast %></td>  
-        <td><%= link_to 'tippen', edit_tipp_path(tipp) %></td>
-      <% end %>
-    <% end %>  
-    <% if x %>
-      <td> - : -</td>
-      <td><%= link_to 'tippen', new_tipp_path(:id => spielbegegnung.id) %></td>
-    <% end %>
-    
-  </tr>
-<% end %>
-</table>
-
-
+<%= render 'spielbegegnungs' %>
   
-  
-  
+
 
 <!-- JUST FOR ADMIN--->
 <%if signed_in? && current_user.admin?%>
@@ -71,7 +43,7 @@
   </tr>
 <br>
 <br>
-<% @tipps_g.each do |tipp| %>
+<% @tipps.each do |tipp| %>
   <tr>
     <td><%= tipp.id %></td>
     <td><%= tipp.spielbegegnung.id %></td>
@@ -86,6 +58,20 @@
 <% end %>
 </table>
 <% end %>
+
+
+
+</br>
+</br>
+DEBUG:</br>
+</br>
+Getippte Spiele<%= @tipped_sps.inspect %>
+
+
+
+
+
+
 
 
 </p>

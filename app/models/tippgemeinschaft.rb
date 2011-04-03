@@ -6,6 +6,5 @@ class Tippgemeinschaft < ActiveRecord::Base
   has_many :users, :through => :user_tippgemeinschafts
  
   
-  
-    
+
 end

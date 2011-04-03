@@ -5,18 +5,22 @@
   <%= @tippgemeinschaft.name %>
 </p>
 
+
+
 Tippgemeinschaftsinformationen<br>
 <%= @tippgemeinschaft.inspect %>
 <br>
 <br>
 Alle Benutzer der Gruppe:
-<%= @tippgemeinschaft.users %><br>
+<% @tippgemeinschaft.users.each do |user| %><br>
+Name: <%= user.name%>
+<% end %>
 
+<br>
 <br>
 Alle Tipps der Gruppe<br>
 <% @tippgemeinschaft.tipps.each do |tipp| %>
 <%= tipp.inspect %> Punkte dieses Tipps:<%= tipp.punkte %><br>
-
 <% end %>
 
 

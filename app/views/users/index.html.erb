@@ -1,43 +1,28 @@
 <h1 class="title">User Ranking</h1>
-<p class="byline"><small>  </small></p>
-
-   
 <div class="entry">
- <p> 
-<table border='1'>
-  <tr>
-    <th>Name</th>
-    <th>Punkte</th>
-   <%if signed_in? && current_user.admin?%>
-    <th></th>
-    <th></th>
-    <th></th>
-   <% end %> 
-  </tr>
+<p> 
+	
+				<% if flash[:notice] %>
+			      <p style="color:green"><%= flash[:notice] %></p>
+			    <% end %>
+			    
+			    <% if flash[:error] %>
+			      <p style="color:red"><%= flash[:error] %></p>
+			    <% end %> 	 
+	
+	
+	
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td> <% if !user.tippgemeinschafts.first.tipps.nil? %>
-          <% y = 0 %>
-          <% user.tippgemeinschafts.first.tipps.each do |tipp| %>
-            <% y +=  tipp.punkte.to_i%>
-          <%end%>
-          <%= y %>
-         <%end%></td>
-   <%if signed_in? && current_user.admin?%>
-      <td><%= link_to 'Show', user %></td>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %></td>
-   <% end %> 
-
-   
-   </tr>
+<%= form_tag users_path, :method => 'get', :id => "users_search" do %>
+	<p>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Search", :name => nil %>
+	</p>
+	<div id="users"><%= render 'users'%></div>
 <% end %>
-</table>
 
-<br />
-<%= link_to 'Back', user_path(current_user) %>
 
+
+<br/><%= link_to 'Back', user_path(current_user) %>
 </p>
 </div>

@@ -1,0 +1,36 @@
+
+<% @spielbegegnungs.each do |spielbegegnung| %>
+  <tr>
+    <td>  <%= Verein.find(spielbegegnung.verein_heim_id).name %></td>
+    <td>  <%= Verein.find(spielbegegnung.verein_gast_id).name %></td>
+    <td>  <%= spielbegegnung.datum.to_date %></td>
+    <td>  <%= spielbegegnung.datum.to_s(:time)  %></td>
+    <td>  <% if spielbegegnung.tore_heim.nil? %>
+               - : -
+            <% else %>
+               <%= spielbegegnung.tore_heim %> : <%= spielbegegnung.tore_gast %>
+          <% end %></td>
+    
+    
+    <% @tipps.each do |tipp| %>
+      <% if spielbegegnung.tipps.include?(tipp)%>
+		 
+		 <%= form_for(tipp) do |f| %>
+			<td>
+			  <div class="field">
+			    <%= f.text_field :tore_heim, :size => 1 %>:<%= f.text_field :tore_gast, :size => 1 %>
+			   
+			  </div>
+			</td>
+			<td>
+			  <div class="actions">
+				    <%= f.submit "tippen!" %>
+			  </div>
+			</td>
+		<% end %>
+
+      <% end %>
+    <% end %>  
+    
+  </tr>
+<% end %>

@@ -41,6 +41,7 @@ class UserTippgemeinschaftsController < ApplicationController
   # POST /user_tippgemeinschafts.xml
   def create
     @user_tippgemeinschaft = UserTippgemeinschaft.new(params[:user_tippgemeinschaft])
+	
 
     respond_to do |format|
       if @user_tippgemeinschaft.save

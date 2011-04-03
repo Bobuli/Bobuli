@@ -1,7 +1,16 @@
 <% if signed_in? %>
 <h1 class="title">Welcome <%= current_user.name%> on Bobuli!</h1>
-<p class="byline"><small>  </small></p>
 
+				<% if flash[:notice] %>
+			      <p style="color:green"><%= flash[:notice] %></p>
+			    <% end %>
+			    
+			    <% if flash[:error] %>
+			      <p style="color:red"><%= flash[:error] %></p>
+			    <% end %> 	
+            
+
+Aktuelle Tippgemeinschaft: <%= current_tippgemeinschaft.inspect %>
    
 <div class="entry">
  <p> 
@@ -9,6 +18,7 @@
 gehört zu folgenden Tppgemeinschaften:<br>
 
 Tippgemeinschafts ID : <%= current_user.tippgemeinschafts.first.id%><br>
+Email: <%= current_user.email%><br>
 Tippgemeinschagts Name: <%= current_user.tippgemeinschafts.first.name%><br>
 </p>
 <p>

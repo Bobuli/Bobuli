@@ -3,6 +3,12 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.string :encrypted_password
+      t.string :salt
+      t.string :validation_key
+      t.string :reset_code
+      t.boolean :active
+ 
+     
 
       t.timestamps
     end

@@ -8,7 +8,6 @@
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 <title>Bobuli - Bet on Bundesliga</title>
-<link href="default.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <!-- start header -->
@@ -40,20 +39,25 @@
           <%= (sidebar = yield :sidebar) ? sidebar : render(:partial => 'sidebar') %>
           </h2>
           -->
-           <h2>Categories</h2>
+          <h2>Bundesliga</h2>
           <ul>
-          <% if signed_in? %>
-             <li><%= link_to 'Alle Vereine ansehen', vereins_path %></li>            
-             <li><%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %></li>
-             <li><%= link_to 'Tipp abgeben', tipps_path %></li>
-             <li><%= link_to 'Tippranking ansehen', users_path%></li>
-             <li><%= link_to 'Benutzer Einstellungen', edit_user_path(current_user) %></li>
-          <%else%>
             <li><%= link_to 'Alle Vereine ansehen', vereins_path %></li>            
             <li><%= link_to 'Alle Spielbegegnungen ansehen', spielbegegnungs_path %></li>
           </ul>
-          <%end%>
           <br>
+       
+		<% if signed_in? %>
+			<br>
+			<h2>Tippspiel</h2>
+			<ul>
+				<li><%= link_to 'Tipp abgeben', tipps_path %></li>
+				<li><%= link_to 'Tippranking ansehen', users_path%></li>
+				<li><%= link_to 'Alle Tippgemeinschaften', tippgemeinschafts_path%></li>
+				<li><%= link_to 'Benutzer Einstellungen', edit_user_path(current_user) %></li>
+			</ul>
+		<%end%>
+         
+       
        
           <% if signed_in? && current_user.admin? %>
            <br>
@@ -64,7 +68,7 @@
               <li><%= link_to 'Alle Tipps verwalten', tipps_path %></li>
               <li><%= link_to 'Alle User verwalten', users_path %></li>
             </ul>
-        <%end%>
+          <%end%>
          
           
         </li>
@@ -76,7 +80,7 @@
       <div class="post">
      
      
-     
+			 
         
             <%= yield %>
      
@@ -100,18 +104,31 @@
               <input type="submit" value="Search" id="x" />
             </div>
           </form>
+          
+        <li>
+        
+              <% if signed_in? %>
+                Tippgruppe wählen: 
+	 			<%= collection_select("tgs", "id", @current_user.tippgemeinschafts, "id", "name", { :selected => current_tippgemeinschaft.id })%>
+	            <br>
+				<%= link_to "Ausloggen", signout_path, :method => :delete %>
+	            <br>
+	          
+ 
+              <% else %>
+              <%= link_to "Einloggen", signin_path %>
+              <% end %>
+        	
+        </li>  
+          
+          
         </li>
         <li>
           <h2>News</h2>
           <p class="tag">
-            
-              <% if signed_in? %>
-              <%= link_to "Sign out", signout_path, :method => :delete %> 
-              <% else %>
-              <%= link_to "Sign in", signin_path %>
-              <% end %>
+	          
+	      
         <br>
-<a href="#">Lakic schießt Kaiserslautern ins Viertelfinale </a></p></li>
         <li>
           <h2>Calendar</h2>
           <div id="calendar_wrap">

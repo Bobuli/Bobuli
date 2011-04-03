@@ -14,7 +14,7 @@ class TippgemeinschaftsController < ApplicationController
   # GET /tippgemeinschafts/1.xml
   def show
     @tippgemeinschaft = Tippgemeinschaft.find(params[:id])
-    @spielbegegnung = Spielbegegnung.find(1);
+    #@spielbegegnung = Spielbegegnung.find(1);
 
 
     respond_to do |format|
@@ -27,7 +27,7 @@ class TippgemeinschaftsController < ApplicationController
   # GET /tippgemeinschafts/new.xml
   def new
     @tippgemeinschaft = Tippgemeinschaft.new
-
+		
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @tippgemeinschaft }
@@ -43,6 +43,11 @@ class TippgemeinschaftsController < ApplicationController
   # POST /tippgemeinschafts.xml
   def create
     @tippgemeinschaft = Tippgemeinschaft.new(params[:tippgemeinschaft])
+	@tippgemeinschaft.group_key = Digest::SHA1.hexdigest("#{Time.now}")
+
+	@user = current_user
+	@user.tippgemeinschafts << @tippgemeinschaft
+	
 
     respond_to do |format|
       if @tippgemeinschaft.save
@@ -82,6 +87,27 @@ class TippgemeinschaftsController < ApplicationController
       format.xml  { head :ok }
     end
   end  
+  
+  
+  def chooseTippgemeinschaft
+  	@tippgemeinschaft = Tippgemeinschaft.find(params[:id])
+  	if current_user.tippgemeinschafts.include?(@tippgemeinschaft)
+  		setTippgemeinschaft(@tippgemeinschaft)  	
+  	end
+  	
+  	respond_to do |format|
+      format.html { 	flash[:notice] = 'Your Tippgemeinschaft has successfully changed.'
+      					render :update do |page|  
+      							page.call 'location.reload' 
+      					end		 
+      			  }
+      format.xml  { head :ok }
+    end
+  end
+  
+  
+  
+  
   
   
 end

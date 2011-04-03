@@ -1,0 +1,39 @@
+<%= hidden_field_tag :direction, params[:direction]%>
+<%= hidden_field_tag :sort, params[:sort]%>		
+
+<table border='1'>
+  <tr>
+    <th><%= sortable("name", "Spielername") %></th>
+    <th><%= sortable("id", "id") %></th>
+    <th>Punkte</th>
+    <th></th>
+   <%if signed_in? && current_user.admin?%>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+   <% end %> 
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.id %></td>
+    <td> <% if !user.tippgemeinschafts.first.tipps.nil? %>
+          <% y = 0 %>
+          <% user.tippgemeinschafts.first.tipps.each do |tipp| %>
+            <% y +=  tipp.punkte.to_i%>
+          <%end%>
+          <%= y %>
+         <%end%></td>
+    <td>nix</td>     
+   <%if signed_in? && current_user.admin?%>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Invite', inviteToGroup_user_path(user) %></td>
+      <td><%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %></td>
+   <% end %> 
+   </tr>
+<% end %>
+</table>
+
+<%= will_paginate @users, :next_label=> "Weiter" %>

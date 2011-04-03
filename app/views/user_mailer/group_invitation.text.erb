@@ -1,0 +1,25 @@
+Hallo <%= @user_dest.name %>,
+
+Der Spieler <%= @user_src.name %> hat dich in die Tippgemeinschaft <%= @tippgemeinschaft.name %> eingeladen:
+
+
+<%=h @text %>
+
+
+
+
+Wenn du der Tippgemeinschaft betreten möchtest, klicke auf den folgenden Link:
+
+<%= activate_tippgemeinschaft_url(:host => "localhost:3000", :key => @tippgemeinschaft.group_key )%>
+
+
+
+
+
+
+
+Viel Spaß beim Tippen,
+
+wünscht das Bobuli-Team
+
+Bei Problemen kannst du uns hier erreichen: bobuli@heroku.com
