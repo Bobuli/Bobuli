@@ -10,8 +10,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.search(params[:search])
-    			 .order(sort_column + " " + sort_direction).paginate(:per_page => 7, 
+    @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 7, 
     																 :page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
